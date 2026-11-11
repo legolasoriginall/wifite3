@@ -14,8 +14,7 @@
 | [`install/01-install-packages.sh`](install/01-install-packages.sh) | نصب بسته‌های پایه: `aircrack-ng`، `hcxtools`، `hcxdumptool`، `hashcat`، `reaver`، `mdk4`، `kismet`، `bettercap` و… |
 | [`install/02-build-hostapd-mana.sh`](install/02-build-hostapd-mana.sh) | نصب پیش‌نیازهای کامپایل و ساخت `hostapd-mana` و نصب آن در `/usr/local/bin` |
 | [`install/03-download-wordlists.sh`](install/03-download-wordlists.sh) | دانلود `rockyou`، `SecLists`، `Probable-Wordlists`، ruleهای تهاجمی و ساخت `kwp` در `/opt/wordlists` |
-| [`install/04-edit-autopwn-ng.sh`](install/04-edit-autopwn-ng.sh) | باز کردن `/usr/local/bin/autopwn-ng` در `nano` برای ویرایش دستی (نیازمند ترمینال تعاملی) |
-| [`install/05-chmod-autopwn-ng.sh`](install/05-chmod-autopwn-ng.sh) | دادن مجوز اجرا به `/usr/local/bin/autopwn-ng` |
+| [`install/04-install-autopwn-ng.sh`](install/04-install-autopwn-ng.sh) | نصب `autopwn-ng` در `/usr/local/bin/autopwn-ng` با مجوز اجرا (`755`) و بررسی سینتکس پیش از نصب |
 | [`examples/run-autopwn-ng.sh`](examples/run-autopwn-ng.sh) | نمونه‌ی فراخوانی‌ها: پیش‌فرض، `stealth`، `brute`، هدف مشخص، بدون فازهای بلند |
 
 ---
@@ -34,9 +33,8 @@ sudo bash install/01-install-packages.sh
 sudo bash install/02-build-hostapd-mana.sh
 sudo bash install/03-download-wordlists.sh
 
-# قرار دادن ابزار در مسیر سیستم
-sudo cp autopwn-ng.sh /usr/local/bin/autopwn-ng
-sudo bash install/05-chmod-autopwn-ng.sh
+# نصب ابزار در مسیر سیستم با مجوز اجرا
+sudo bash install/04-install-autopwn-ng.sh
 ```
 
 ## استفاده
@@ -82,7 +80,6 @@ sudo autopwn-ng --help
 - `-h/--help` با `sed -n '2,8p'` سرصفحه‌ی فایل را چاپ می‌کند، پس با تغییر هدر اسکریپت راهنما هم تغییر می‌کند.
 - در انتخاب پروفایل، `CAPTURE=${CAPTURE:-240}` مقدار پیش‌فرض بالای فایل (`120`) را بازنویسی نمی‌کند؛ برای تغییر واقعی زمان برداشت از `-t` استفاده کن.
 - استخراج رمز WPS با `grep -oP` انجام می‌شود و به `grep` با پشتیبانی PCRE نیاز دارد.
-- `install/04-edit-autopwn-ng.sh` ویرایشگر تعاملی باز می‌کند و در اجرای غیرتعاملی کار نمی‌کند.
 - فاز evil twin ۱۸۰ ثانیه منتظر قربانی می‌ماند؛ در محیط شلوغ ممکن است کافی نباشد.
 
 ## سلب مسئولیت
