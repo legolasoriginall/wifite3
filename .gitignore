@@ -1,0 +1,16 @@
+# خروجی‌های اجرا
+/tmp/
+*.pcapng
+*.hc22000
+*.pot
+hashcat.pot
+*.csv
+report/
+
+# وردلیست‌ها و دیکشنری‌ها (حجیم)
+/opt/wordlists/
+wordlists/
+
+# ادیتور و سیستم
+*.swp
+.DS_Store
